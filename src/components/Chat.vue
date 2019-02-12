@@ -49,7 +49,8 @@ export default {
     }
   },
   mounted() {
-    fetch("http://localhost:3001/messages")
+    const PORT = process.env.PORT || 3001;
+    fetch("http://localhost:" + PORT + "/messages")
       .then(response => {
         return response.json();
       })
@@ -65,3 +66,4 @@ export default {
   }
 };
 </script>
+
