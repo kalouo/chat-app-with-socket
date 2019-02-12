@@ -6,11 +6,15 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "nodemon server-socket/index.js",
-    "heroku-postbuild":"vue-cli-service build"
+    "start": "nodemon server/index.js",
+    "heroku-postbuild": "vue-cli-service build"
   },
   "dependencies": {
+    "bluebird": "^3.5.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
+    "mongoose": "^5.4.11",
     "nodemon": "^1.18.10",
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0",

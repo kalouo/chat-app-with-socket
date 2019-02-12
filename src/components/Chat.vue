@@ -26,6 +26,7 @@
 </template>
 <script>
 const io = require("socket.io-client");
+// const message = require("../../server/message.js");
 
 export default {
   data() {
@@ -41,16 +42,26 @@ export default {
       e.preventDefault();
 
       this.socket.emit("SEND_MESSAGE", {
-        user: this.user,
+        handle: this.user,
         message: this.message
       });
       this.message = "";
     }
   },
   mounted() {
-    this.socket.on("MESSAGE", data => {
-      this.messages = [...this.messages, data];
-    });
+    fetch("http://localhost:3001/messages")
+      .then(response => {
+        return response.json();
+      })
+      .then(jsonResponse => {
+        this.messages = jsonResponse;
+      })
+      .then(() => {
+        this.socket.on("MESSAGE", data => {
+          this.messages = [...this.messages, data];
+        });
+      })
+      .catch(err => console.log(err));
   }
 };
 </script>
