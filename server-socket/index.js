@@ -7,6 +7,8 @@ const server = app.listen(PORT, function() {
   console.log("Server running on port ", PORT);
 });
 
+app.use(express.static("dist"));
+
 const io = require("socket.io")(server);
 io.on("connection", function(socket) {
   console.log(socket.id);
