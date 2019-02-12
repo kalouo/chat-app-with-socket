@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "nodemon server-socket/index.js"
+    "start": "nodemon server-socket/index.js",
+    "heroku-postbuild":"vue-cli-service build"
   },
   "dependencies": {
     "express": "^4.16.4",
