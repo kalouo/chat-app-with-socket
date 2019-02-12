@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const keys = require("./keys");
 const message = require("./message");
+const logger = require("heroku-logger");
 
 const PORT = process.env.PORT || 3001;
 
@@ -12,6 +13,7 @@ const app = new express();
 
 const server = app.listen(PORT, function() {
   console.log("Server running on port ", PORT);
+  logger.info("Server running on port ", PORT);
 });
 
 app.use(bodyParser.json());
@@ -21,6 +23,7 @@ app.use(express.static("dist"));
 const io = require("socket.io")(server);
 io.on("connection", function(socket) {
   console.log("Socket connection established on ", socket.id);
+  logger.info("Connection to Socket established on", socket.id);
   socket.on("SEND_MESSAGE", async function(data) {
     data.timestamp = new Date();
     await new message(data).save();
@@ -41,4 +44,5 @@ mongoose.connection.on("error", () => {
 });
 mongoose.connection.once("open", function() {
   console.log("Connection to MongoDB established");
+  logger.info("Connection to MongoDB established");
 });
