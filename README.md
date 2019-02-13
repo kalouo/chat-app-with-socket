@@ -1,29 +1,30 @@
 # chat-application
 
+##. About
+
+This is a basic chat application set up using socket.io, mongoose (ODM for MongoDB) and Vue.
+
+<div width="400px">
+<img alt="MongoDB" src="https://en.wikipedia.org/wiki/MongoDB#/media/File:MongoDB-Logo.svg" width="100px">
+<img alt="Socket" src="https://goo.gl/images/XyV5re">
+<img alt="Vue" src="https://commons.wikimedia.org/wiki/File:Vue.js_Logo_2.svg" width="100px">
+
+</div>
+
 ## Project setup
+
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
 ### Compiles and minifies for production
+
 ```
-yarn run build
+yarn build
 ```
 
-### Run your tests
-```
-yarn run test
-```
+### Fires up the server on localhost:3001
 
-### Lints and fixes files
 ```
-yarn run lint
+yarn start
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
