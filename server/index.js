@@ -20,6 +20,8 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static("dist"));
 
+// Connecting socket.io
+
 const io = require("socket.io")(server);
 io.on("connection", function(socket) {
   console.log("Socket connection established on ", socket.id);
@@ -31,6 +33,8 @@ io.on("connection", function(socket) {
   });
 });
 
+//API endpoints
+
 app.get("/messages", async (req, res) => {
   let result = await message.find();
   res.send(result);
@@ -40,6 +44,7 @@ app.get("/messages", async (req, res) => {
 
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
 mongoose.connection.on("error", () => {
+  logger.info("Error in database connection");
   console.log("Error in database connection");
 });
 mongoose.connection.once("open", function() {

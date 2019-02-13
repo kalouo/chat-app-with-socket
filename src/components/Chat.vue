@@ -2,36 +2,43 @@
   <div class="card mt-3">
     <div class="card-body">
       <div class="card-title">
-        <h3>Chat Group</h3>
+        <h3>Chat Room</h3>
+        <v-card class="pl-5 pr-5">
+          <chatItem
+            v-for="message in this.messages.slice(this.messages.length -15)"
+            :key="message._id"
+            :chat="message"
+            :handle="user"
+          ></chatItem>
+        </v-card>
         <hr>
-      </div>
-      <div class="card-body">
-        <div class="messages">{{this.messages}}</div>
       </div>
     </div>
     <div class="card-footer">
       <form @submit.prevent="sendMessage">
-        <div class="gorm-group">
-          <label for="user">User:</label>
-          <input type="text" v-model="user" class="form-control">
-        </div>
-        <div class="gorm-group pb-3">
-          <label for="message">Message:</label>
-          <input type="text" v-model="message" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-success">Send</button>
+        <v-card class="text-xs-center">
+          <v-text-field v-model="message" class="mr-5 ml-5"></v-text-field>
+          <v-btn type="submit" class="white--text" color="blue">Send</v-btn>
+        </v-card>
       </form>
     </div>
   </div>
 </template>
 <script>
 const io = require("socket.io-client");
+import chatItem from "./chatItem";
+
 // const message = require("../../server/message.js");
 
 export default {
+  name: "Chat",
+  components: {
+    chatItem
+  },
+  props: ["handle"],
   data() {
     return {
-      user: "",
+      user: this.handle,
       message: "",
       messages: [],
       socket: io()
@@ -49,7 +56,6 @@ export default {
     }
   },
   mounted() {
-    const PORT = process.env.PORT || 3001;
     fetch("/messages")
       .then(response => {
         return response.json();

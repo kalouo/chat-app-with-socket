@@ -1,22 +1,29 @@
 <template>
   <div id="app">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <Chat/>
-        </div>
-      </div>
-    </div>
+    <setHandle v-if="handleNotSet" v-on:set-handle="setHandle"/>
+    <Chat v-else :handle="handle"/>
   </div>
 </template>
 
 <script>
 import Chat from "./components/Chat.vue";
+import setHandle from "./components/setHandle.vue";
 
 export default {
   name: "app",
   components: {
-    Chat
+    Chat,
+    setHandle
+  },
+  data: () => ({
+    handle: "",
+    handleNotSet: true
+  }),
+  methods: {
+    setHandle: function(handle) {
+      this.handle = handle;
+      this.handleNotSet = false;
+    }
   }
 };
 </script>
