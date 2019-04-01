@@ -2,7 +2,7 @@
 
 ## About
 
-This basic chat application was set up using Socket,MongoDB and Vue/Vuetify.
+This basic chat application was set up using Socket, MongoDB and Vue/Vuetify.
 
 <p align="center">
 <img alt="MongoDB" src="src/assets/mongo.png" width="200" hspace ="10">
