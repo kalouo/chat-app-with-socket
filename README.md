@@ -5,10 +5,10 @@
 This basic chat application was set up using Socket,MongoDB and Vue/Vuetify.
 
 <p align="center">
-<img alt="MongoDB" src="src/assets/mongo.png" width="100" hspace ="10">
-<img alt="Socket" src="src/assets/socket-io.svg" width= "50"  hspace ="10">
-<img alt="Vue" src="src/assets/vue.png" width="50"  hspace ="10">
-<img alt="Vuetify" src="src/assets/vuetify.png" width="40"  hspace ="10">
+<img alt="MongoDB" src="src/assets/mongo.png" width="200" hspace ="10">
+<img alt="Socket" src="src/assets/socket-io.svg" width= "100"  hspace ="10">
+<img alt="Vue" src="src/assets/vue.png" width="100"  hspace ="10">
+<img alt="Vuetify" src="src/assets/vuetify.png" width="80"  hspace ="10">
 
 </p>
 
